@@ -1,9 +1,9 @@
 ---
-- name: Copy Script and Run
+- name: Install Kubernetes Master
   hosts: localhost
   become: true
   tasks:
     - name: Copy the script
-      copy: src=/home/ubuntu/test.sh dest=/tmp
+      copy: src=/home/ubuntu/devopscapstoneproject1/install-kubernetes-master.sh dest=/tmp
     - name: Run the script
-      command: sh /tmp/test.sh
+      command: sh /tmp/install-kubernetes-master.sh

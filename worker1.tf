@@ -55,6 +55,7 @@ add-apt-repository --yes --update ppa:ansible/ansible
 apt install ansible -y
 sudo apt install git -y
 useradd ansible -m
+git clone https://github.com/anandbommakanti/devopscapstoneproject1.git
     EOF
 
 }
