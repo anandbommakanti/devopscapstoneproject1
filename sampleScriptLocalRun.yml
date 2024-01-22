@@ -1,0 +1,9 @@
+---
+- name: Copy Script and Run
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Copy the script
+      copy: src=/home/ubuntu/test.sh dest=/tmp
+    - name: Run the script
+      command: sh /tmp/test.sh
