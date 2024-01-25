@@ -46,7 +46,7 @@ resource "aws_security_group" "w1_allow_ssh_http" {
 resource "aws_instance" "worker1_instance" {
     
     ami = "ami-0c7217cdde317cfec"
-    instance_type = "t2.micro"
+    instance_type = "t2.medium"
     associate_public_ip_address = true
     key_name = aws_key_pair.my_ec2_kp.key_name
     vpc_security_group_ids = [aws_security_group.w1_allow_ssh_http.id]

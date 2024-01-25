@@ -40,7 +40,8 @@ systemctl enable --now cri-docker.socket
 systemctl status cri-docker.socket
 
 echo "Initializing the kubeadm along with Pod network..."
-kubeadm init --apiserver-advertise-address=52.90.91.123 --pod-network-cidr=192.168.0.0/16 --cri-socket /run/cri-dockerd.sock
+MASTER_PRIVATE_IP=$(ip addr show eth0 | awk '/inet / {print $2}' | cut -d/ -f1)
+kubeadm init --apiserver-advertise-address="$MASTER_PRIVATE_IP" --pod-network-cidr=192.168.0.0/16 --cri-socket /run/cri-dockerd.sock
 mkdir -p /home/ubuntu/.kube
 cp -i /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
 chown 1000:1000 $HOME/.kube/config
