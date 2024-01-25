@@ -27,6 +27,14 @@ resource "aws_security_group" "w1_allow_ssh_http" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 
+    ingress {
+        description = "allow-all-ports-from-same-subnet"
+        from_port = "-1"
+        to_port = "-1"
+        protocol = "all"
+        cidr_blocks = [aws_default_vpc.default.cidr_block]
+    }
+
     egress {
         from_port = 0
         to_port = 0
